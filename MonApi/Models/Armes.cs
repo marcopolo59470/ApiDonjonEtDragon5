@@ -8,7 +8,6 @@ namespace MonApi.Models
 {
     public class Armes
     {
-        
         public int Id { get; set; }
 
              // C'est le nom ....  
