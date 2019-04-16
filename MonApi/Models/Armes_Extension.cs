@@ -21,17 +21,6 @@ namespace MonApi.Models
         [Required]
         public string Name { get; set; }
 
-            // Foreign Key
-             // Le nom de l'équipement qui a recu une 'extension'
-        [Required]
-        public string IdArmes { get; set; }
-
-            // propriété de navigation
-        public Armes Armes { get; set; }
-
-        [Required]
-        public string VO_Name { get; set; }
-
              // Les dés de degats de l'arme
         [Required]
         public string Bobo { get; set; }

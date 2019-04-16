@@ -36,7 +36,7 @@ namespace MonApi.Models
 
              // Le truc que tout le monde s'en fou dans les JDR ...
         [Required]
-        public string Poids { get; set; } // en Kg
+        public float Poids { get; set; } // en Kg
 
              // Le truc que tout le monde fait gaffe dans les JDR ...
         [Required]
