@@ -24,7 +24,7 @@ namespace APIDonjonEtDragon.Controllers
         {
             if (!db.Armes.Any())
             {
-                _ = PostArmes(new Armes { Id = 3, Name = "Bâton", VO_Name = "Quarterstaff", IsGuerre = false, IsDistant = false, Bobo = "1D6", Type_bobo = "contondant", Poids = 1, Prix = "2 pa", Propriete = "Polyvalente(1D8)", Description = "On a trouvé ca par-terre pour le mage ..." });
+                _ = PostArmes(new Armes { Id = 1, Name = "Bâton", VO_Name = "Quarterstaff", IsGuerre = false, IsDistant = false, Bobo = "1D6", Type_bobo = "contondant", Poids = 1, Prix = "2 pa", Propriete = "Polyvalente(1D8)", Description = "On a trouvé ca par-terre pour le mage ..." });
 
             }
 
