@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Web.Http;
 
 namespace APIDonjonEtDragon
@@ -12,6 +13,7 @@ namespace APIDonjonEtDragon
             // Web API configuration and services
 
             // Web API routes
+           
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
@@ -19,6 +21,8 @@ namespace APIDonjonEtDragon
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+         
         }
     }
 }

@@ -1,6 +1,8 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Armures";
 }
+
+    
 
 <form id="saveArmes" method="post">
     <h3>Ajouter une arme :</h3>
@@ -72,18 +74,16 @@
                 });
             });
         });
-   
 
-    $('#saveArme').click(function()
-         {
-         $.post("/api/armes/",
-              $("#saveArmes").serialize(),
-              function(value)
-              {
-                  $('#armes').append('<li>' + value.Name + '</li>');
-              },
-             "json"
-         );
-    });
+
+        $('#saveArme').click(function () {
+            $.post("/api/armes/",
+                $("#saveArmes").serialize(),
+                function (value) {
+                    $('#armes').append('<li>' + value.Name + '</li>');
+                },
+                "json"
+            );
+        });
     </script>
 }

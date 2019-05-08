@@ -3,9 +3,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Runtime.Serialization.Json;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Description;
@@ -25,9 +28,11 @@ namespace APIDonjonEtDragon.Controllers
             if (!db.Armes.Any())
             {
                 _ = PostArmes(new Armes { Id = 1, Name = "Bâton", VO_Name = "Quarterstaff", IsGuerre = false, IsDistant = false, Bobo = "1D6", Type_bobo = "contondant", Poids = 1, Prix = "2 pa", Propriete = "Polyvalente(1D8)", Description = "On a trouvé ca par-terre pour le mage ..." });
-
+                
             }
 
+
+          
             return db.Armes;
         }
 

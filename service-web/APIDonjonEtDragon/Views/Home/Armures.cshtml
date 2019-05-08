@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "Armures";
+}
+
+<form id="saveArmures" method="post">
+    <h3>Ajouter une armure :</h3>
+    <p>
+        <label for="contactId">Id_armure:</label>
+        <input type="number" name="Id_armure" />
+    </p>
+    <p>
+        <label for="contactName">Nom_armure:</label>
+        <input type="text" name="Name_armure" />
+    </p>
+    <p>
+        <label for="contactName">nom englais:</label>
+        <input type="text" name="VO_Name_armure" />
+    </p>
+    <p>
+        <label for="contactName">CA:</label>
+        <input type="text" name="CA" />
+    </p>
+    <p>
+        <label for="contactName">Force requise:</label>
+        <input type="text" name="Force" />
+    </p>
+    <p>
+        <label for="contactName">Poids_armure:</label>
+        <input type="number" name="Poids_armure" />
+    </p>
+    <p>
+        <label for="contactName">Prix_armure:</label>
+        <input type="text" name="Prix_armure" />
+    </p>
+    <p>
+        <label for="contactName">Description_armure:</label>
+        <input type="text" name="Description_armure" />
+    </p>
+   
+    <input type="button" id="saveArmure" value="Ajouter" />
+</form>
+
+<br />
+
+<div id="body">
+    Armures actuelle ;
+    <ul id="armures"></ul>
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $.getJSON('/api/armures', function (contactsJsonPayload) {
+                $(contactsJsonPayload).each(function (i, item) {
+                    $('#armures').append('<li>' + item.Name_armure + '</li>');
+                });
+            });
+        });
+
+
+        $('#saveArmures').click(function () {
+            $.post("/api/armures/",
+                $("#saveArmures").serialize(),
+                function (value) {
+                    $('#armures').append('<li>' + value.Name_armure + '</li>');
+                },
+                "json"
+            );
+        });
+    </script>
+}

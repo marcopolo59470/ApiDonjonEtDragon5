@@ -13,9 +13,9 @@ namespace APIDonjonEtDragon.Controllers
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Armures()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "La liste des armures";
 
             return View();
         }

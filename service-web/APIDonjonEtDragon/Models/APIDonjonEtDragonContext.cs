@@ -14,11 +14,19 @@ namespace APIDonjonEtDragon.Models
         // automatically whenever you change your model schema, please use data migrations.
         // For more information refer to the documentation:
         // http://msdn.microsoft.com/en-us/data/jj591621.aspx
-    
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            Database.SetInitializer<APIDonjonEtDragonContext>(null);
+            base.OnModelCreating(modelBuilder);
+        }
+
         public APIDonjonEtDragonContext() : base("name=APIDonjonEtDragonContext")
         {
         }
 
         public System.Data.Entity.DbSet<APIDonjonEtDragon.Models.Armes> Armes { get; set; }
+
+        public System.Data.Entity.DbSet<APIDonjonEtDragon.Models.Armures> Armures { get; set; }
     }
 }
