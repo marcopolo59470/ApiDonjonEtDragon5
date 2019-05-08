@@ -28,5 +28,7 @@ namespace APIDonjonEtDragon.Models
         public System.Data.Entity.DbSet<APIDonjonEtDragon.Models.Armes> Armes { get; set; }
 
         public System.Data.Entity.DbSet<APIDonjonEtDragon.Models.Armures> Armures { get; set; }
+
+        public System.Data.Entity.DbSet<APIDonjonEtDragon.Models.Sorts> Sorts { get; set; }
     }
 }

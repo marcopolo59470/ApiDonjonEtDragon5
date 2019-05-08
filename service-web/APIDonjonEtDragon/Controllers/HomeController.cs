@@ -20,9 +20,9 @@ namespace APIDonjonEtDragon.Controllers
             return View();
         }
 
-        public ActionResult Contact()
+        public ActionResult Sorts()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "La liste des sorts";
 
             return View();
         }

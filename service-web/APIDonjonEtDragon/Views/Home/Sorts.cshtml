@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "Sorts";
+}
+
+    <form id="saveSorts" method="post">
+        <h3>Ajouter une armure :</h3>
+        <p>
+            <label for="contactId">Id_sort:</label>
+            <input type="number" name="Id_sorts" />
+        </p>
+        <p>
+            <label for="contactName">Nom_sort:</label>
+            <input type="text" name="Name_sorts" />
+        </p>
+        <p>
+            <label for="contactName">nom englais:</label>
+            <input type="text" name="VO_Name_sort" />
+        </p>
+        <p>
+            <label for="contactName">Ecole:</label>
+            <input type="text" name="Ecole" />
+        </p>
+        <p>
+            <label for="contactName">Niveau:</label>
+            <input type="number" name="Niveau" />
+        </p>
+        <p>
+            <label for="contactName">temps incantation:</label>
+            <input type="text" name="Tps_incant" />
+        </p>
+        <p>
+            <label for="contactName">Portée:</label>
+            <input type="number" name="Portée" />
+        </p>
+        <p>
+            <input name="IsConcentration" type="radio" value="true" />
+            <label for="Remember">sort de concentration</label>
+            <input name="IsConcentration" type="radio" value="false" />
+            <label for="Remember">sort cumulable</label>
+        </p>
+        <p>
+            <label for="contactName">Durée:</label>
+            <input type="number" name="Durée" />
+        </p>
+        <p>
+            <label for="contactName">Effet:</label>
+            <input type="text" name="Effet" />
+        </p>
+        <p>
+            <label for="contactName">Race disponible:</label>
+            <input type="text" name="Race_use" />
+        </p>
+
+        <input type="button" id="saveSort" value="Ajouter" />
+    </form>
+
+<br />
+
+<div id="body">
+    Sorts actuelle ;
+    <ul id="sorts"></ul>
+
+</div>
+
+@section scripts{
+    <script type="text/javascript">
+        $(function () {
+            $.getJSON('/api/sorts', function (contactsJsonPayload) {
+                $(contactsJsonPayload).each(function (i, item) {
+                    $('#sorts').append('<li>' + item.Name_sorts + '</li>');
+                });
+            });
+        });
+
+
+        $('#saveSort').click(function () {
+            $.post("/api/sorts/",
+                $("#saveSorts").serialize(),
+                function (value) {
+                    $('#sorts').append('<li>' + value.Name_sorts + '</li>');
+                },
+                "json"
+            );
+        });
+    </script>
+}

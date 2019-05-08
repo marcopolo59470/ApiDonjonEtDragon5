@@ -143,12 +143,14 @@
     <Compile Include="Controllers\ArmesController.cs" />
     <Compile Include="Controllers\ArmuresController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SortsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\APIDonjonEtDragonContext.cs" />
     <Compile Include="Models\Armes.cs" />
     <Compile Include="Models\Armures.cs" />
+    <Compile Include="Models\Sorts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -189,6 +191,7 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Armures.cshtml" />
+    <Content Include="Views\Home\Sorts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
