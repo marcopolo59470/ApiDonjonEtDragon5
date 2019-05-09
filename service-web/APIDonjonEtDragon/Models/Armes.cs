@@ -8,7 +8,7 @@ namespace APIDonjonEtDragon.Models
 {
     public class Armes
     {
-       
+        [Key]
         public int Id { get; set; }
 
         // C'est le nom ....  

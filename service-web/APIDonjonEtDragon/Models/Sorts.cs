@@ -47,6 +47,12 @@ namespace APIDonjonEtDragon.Models
         [Required]
         public string Effet { get; set; }
 
+        // Effet supplémentaire du sort si lancé en niveau au dessus
+        public string Lvl_upg { get; set; }
+
+        // misc
+        public string Autre { get; set; }
+
         // Classe pouvant utiliser le sort
         [Required]
         public string Race_use { get; set; }

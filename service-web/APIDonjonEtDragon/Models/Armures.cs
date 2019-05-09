@@ -23,6 +23,9 @@ namespace APIDonjonEtDragon.Models
 
         public int CA { get; set; }
 
+        //bonus de DEX a la CA ?
+        public string Bonus_CA { get; set; }
+
         // Minimum de FORCE pour porter l'engin
         [Required]
         public string Force { get; set; }
