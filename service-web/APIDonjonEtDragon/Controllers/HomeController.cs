@@ -13,6 +13,13 @@ namespace APIDonjonEtDragon.Controllers
             return View();
         }
 
+        public ActionResult Armes()
+        {
+            ViewBag.Message = "La liste des armes";
+
+            return View();
+        }
+
         public ActionResult Armures()
         {
             ViewBag.Message = "La liste des armures";

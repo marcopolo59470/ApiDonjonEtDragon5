@@ -56,5 +56,8 @@ namespace APIDonjonEtDragon.Models
         // Classe pouvant utiliser le sort
         [Required]
         public string Race_use { get; set; }
+
+        // comoosants requis pour lancer le sort
+        public string Composantes { get; set; }
     }
 }

@@ -3,17 +3,17 @@
 }
 
     <form id="saveSorts" method="post">
-        <h3>Ajouter une armure :</h3>
+        <h3>Ajouter un sort :</h3>
         <p>
-            <label for="contactId">Id_sort:</label>
+            <label for="contactId">Id:</label>
             <input type="number" name="Id_sorts" />
         </p>
         <p>
-            <label for="contactName">Nom_sort:</label>
+            <label for="contactName">Nom sort:</label>
             <input type="text" name="Name_sorts" />
         </p>
         <p>
-            <label for="contactName">nom englais:</label>
+            <label for="contactName">Nom anglais:</label>
             <input type="text" name="VO_Name_sort" />
         </p>
         <p>
@@ -25,7 +25,7 @@
             <input type="number" name="Niveau" />
         </p>
         <p>
-            <label for="contactName">temps incantation:</label>
+            <label for="contactName">Temps incantation:</label>
             <input type="text" name="Tps_incant" />
         </p>
         <p>
@@ -55,8 +55,12 @@
             <input type="text" name="Autre" />
         </p>
         <p>
-            <label for="contactName">Race disponible:</label>
+            <label for="contactName">Classe disponible:</label>
             <input type="text" name="Race_use" />
+        </p>
+        <p>
+            <label for="contactName">Composants:</label>
+            <input type="text" name="Composantes" />
         </p>
 
         <input type="button" id="saveSort" value="Ajouter" />
@@ -75,7 +79,7 @@
         $(function () {
             $.getJSON('/api/sorts', function (contactsJsonPayload) {
                 $(contactsJsonPayload).each(function (i, item) {
-                    $('#sorts').append('<li>' + item.Name_sorts + '</li>');
+                    $('#sorts').append("<li><a href=http://localhost:61621/api/Sorts/"+item.Id_sorts+">" + item.Name_sorts + "</a></li>");
                 });
             });
         });
@@ -85,7 +89,7 @@
             $.post("/api/sorts/",
                 $("#saveSorts").serialize(),
                 function (value) {
-                    $('#sorts').append('<li>' + value.Name_sorts + '</li>');
+                    $('#sorts').append("<li><a href=http://localhost:61621/api/Sorts/"+value.Id_sorts+">" + value.Name_sorts + "</a></li>");
                 },
                 "json"
             );

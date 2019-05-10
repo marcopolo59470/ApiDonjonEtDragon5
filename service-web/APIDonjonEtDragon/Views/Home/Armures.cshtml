@@ -5,15 +5,15 @@
     <form id="saveArmures" method="post">
         <h3>Ajouter une armure :</h3>
         <p>
-            <label for="contactId">Id_armure:</label>
+            <label for="contactId">Id:</label>
             <input type="number" name="Id_armure" />
         </p>
         <p>
-            <label for="contactName">Nom_armure:</label>
+            <label for="contactName">Nom armure:</label>
             <input type="text" name="Name_armure" />
         </p>
         <p>
-            <label for="contactName">nom englais:</label>
+            <label for="contactName">Nom anglais:</label>
             <input type="text" name="VO_Name_armure" />
         </p>
         <p>
@@ -29,15 +29,15 @@
             <input type="text" name="Force" />
         </p>
         <p>
-            <label for="contactName">Poids_armure:</label>
+            <label for="contactName">Poids armure:</label>
             <input type="number" name="Poids_armure" />
         </p>
         <p>
-            <label for="contactName">Prix_armure:</label>
+            <label for="contactName">Prix armure:</label>
             <input type="text" name="Prix_armure" />
         </p>
         <p>
-            <label for="contactName">Description_armure:</label>
+            <label for="contactName">Description armure:</label>
             <input type="text" name="Description_armure" />
         </p>
 
@@ -57,7 +57,7 @@
         $(function () {
             $.getJSON('/api/armures', function (contactsJsonPayload) {
                 $(contactsJsonPayload).each(function (i, item) {
-                    $('#armures').append('<li>' + item.Name_armure + '</li>');
+                    $('#armures').append("<li><a href=http://localhost:61621/api/Armures/"+item.Id_armure+">" + item.Name_armure + "</a></li>");
                 });
             });
         });
@@ -67,7 +67,7 @@
             $.post("/api/armures/",
                 $("#saveArmures").serialize(),
                 function (value) {
-                    $('#armures').append('<li>' + value.Name_armure + '</li>');
+                    $('#armures').append("<li><a href=http://localhost:61621/api/Armures/"+value.Id_armure+">" + value.Name_armure + "</a></li>");
                 },
                 "json"
             );
