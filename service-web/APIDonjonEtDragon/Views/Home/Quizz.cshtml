@@ -1,0 +1,243 @@
+﻿@{
+    ViewBag.Title = "Quizzs";
+}
+<link href="~/Style/Quizz.css" rel="stylesheet" />
+<div id="quiz"></div>
+<form id="pseudo" method="post">
+
+    <p>
+        <label for="contactName">pseudo:</label>
+        <input type="text" id="ps" name="Pseudo" required />
+    </p>
+
+    <input type="button" id="submit" value="resultat" />
+</form>
+
+<div id="results"></div>
+<br />
+recap des scores ;
+<div id="log"></div>
+
+@section scripts{
+    <script type="text/javascript">
+
+
+
+        function buildQuiz() {
+            const output = [];
+
+            // check les questions
+            myQuestions.forEach((currentQuestion, questionNumber) => {
+                // stock liste reponse
+                const answers = [];
+
+                // pour chaque availabilitance
+                for (letter in currentQuestion.answers) {
+                    // ...bouton
+                    answers.push(
+                        `<label>
+                            <input type="radio" name="question${questionNumber}" value="${letter}">
+                            ${letter} :
+                            ${currentQuestion.answers[letter]}
+</label>`
+                    );
+                }
+
+                // add q+r
+                output.push(
+                    `<div class="question"> ${currentQuestion.question} </div>
+<div class="answers"> ${answers.join("")} </div>`
+                );
+            });
+
+            // jointure
+            quizContainer.innerHTML = output.join("");
+        }
+        let score = 0;
+        let numCorrect = 0;
+
+        //resultat
+        function showResults() {
+            const answerContainers = quizContainer.querySelectorAll(".answers");
+
+            // score
+
+
+            // for each question
+            myQuestions.forEach((currentQuestion, questionNumber) => {
+
+                const answerContainer = answerContainers[questionNumber];
+                const selector = `input[name=question${questionNumber}]:checked`;
+                const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+
+                // Si bon
+                if (userAnswer === currentQuestion.correctAnswer) {
+                    // gg+1
+                    numCorrect++;
+
+                    // un peu de couleur du gwak
+                    answerContainers[questionNumber].style.color = "lightgreen";
+                } else {
+                    // si faux ou vide
+                    // rose du gwak
+                    answerContainers[questionNumber].style.color = "pink";
+                }
+            });
+
+            // le score
+            resultsContainer.innerHTML = `${numCorrect} sur ${myQuestions.length}`;
+            //document.getElementById("pseudo").innerHTML = '<p><label for="contactId">pseudo:</label><input type="text" name="Pseudo" required /></p><p><label for="contactName">note:</label><input type="number" name="Note" value='+numCorrect+' required /></p><button id="submit">Resultat</button>'
+            score = numCorrect;
+            numCorrect = 0;
+
+
+            var nom = document.getElementById("ps").value;
+            const Url = '/api/Quizzs';
+            const data = {
+                Id_Player: 2,
+                Pseudo: nom,
+                Note: score
+            }
+
+
+            $.post(Url, data, function () {
+
+
+            })
+        }
+
+
+
+
+        const quizContainer = document.getElementById("quiz");
+        const resultsContainer = document.getElementById("results");
+        const submitButton = document.getElementById("submit");
+        const myQuestions = [
+            {   //Le MD décide qui jouera en premier
+                question: "1) Si un PJ et un monstre obtiennent le même score d'initiative :",
+                answers: {
+                    a: "Celui qui a le plus grand modificateur de Dextérité joue en premier.",
+                    b: "Le MJ décide qui jouera en premier.",
+                    c: "On doit relancer les dés d'initiative.",
+                    d: "On considère que les deux actions sont simultanées."
+                },
+                correctAnswer: "b"
+            },
+            {   //On peut bouger, puis attaquer, puis bouger de nouveau, puis attaquer, etc.
+
+                question: "2) Mouvement et attaque :",
+                answers: {
+                    a: "On doit d'abord réaliser le mouvement, puis ensuite l'attaque.",
+                    b: "On doit d'abord réaliser l'attaque, puis ensuite le mouvement.",
+                    c: "On peut bouger, puis attaquer, puis bouger de nouveau, puis attaquer, etc.",
+                    d: "On bouge ou on attaque, mais on ne fait pas les deux lors d'un même round."
+                },
+                correctAnswer: "c"
+            },
+            {   //Une action supplémentaire et limitée donnée par une capacité ou un sort
+                question: "3) Une action bonus est :",
+                answers: {
+                    a: "Une action supplémentaire et limitée donnée par une capacité ou un sort.",
+                    b: "Une action supplémentaire complètement libre donnée par une capacité ou un sort.",
+                    c: "Une action mineure octroyée par le MD pour récompenser un joueur.",
+                    d: "Une action mineure qu'on peut considérer comme immédiate."
+                },
+                correctAnswer: "a"
+            },
+            {   //Cela provoque une attaque d'opportunité dans le second cas seulement.
+                question: "4) Bouger de 1,50 m tout en restant au contact de l'ennemi, et bouger de 1,50 m pour se retrouver hors de portée de l'allonge d'un ennemi :",
+                answers: {
+                    a: "Cela provoque une attaque d'opportunité dans les deux cas.",
+                    b: "Cela provoque une attaque d'opportunité dans le premier cas seulement.",
+                    c: "Cela provoque une attaque d'opportunité dans le second cas seulement.",
+                    d: "Cela ne provoque une attaque d'opportunité dans aucun des deux cas."
+                },
+                correctAnswer: "c"
+            },
+            {   //Oui, si le deuxième sort ne demande pas de concentration.
+                question: "5) Un magicien qui a lancé un sort qui demande de la concentration peut-il lancer un autre sort ensuite sans mettre fin au premier ?",
+                answers: {
+                    a: "Non, c'est impossible.",
+                    b: "Oui, si le deuxième sort ne demande pas de concentration. ",
+                    c: "Oui, si le deuxième sort est un sort mineur.",
+                    d: "Oui, quel que soit le deuxième sort."
+                },
+                correctAnswer: "b"
+            },
+            {   //Oui, par exemple si l'un des sorts est un sort mineur.
+                question: "6) Un lanceur de sorts peut-il lancer deux sorts dans un même round ?",
+                answers: {
+                    a: "Non, c'est impossible.",
+                    b: "Oui, par exemple s'ils ont tous des temps d'incantation inférieurs à 1 action.",
+                    c: "Oui, par exemple si l'un des sorts est un sort mineur. ",
+                    d: "Oui, par exemple si le lanceur de sorts possède un certain niveau."
+                },
+                correctAnswer: "c"
+            },
+            {   //De conditionner son action à un déclencheur.
+                question: "L'action Se tenir prêt permet :",
+                answers: {
+                    a: "De conditionner son action à un déclencheur.",
+                    b: "De choisir parmi l'ordre d'initiative à quel moment on va jouer.",
+                    c: "De jouer en dernier, une fois qu'on a vu ce qui s'est passé dans le round.",
+                    d: "De ne pas être surpris."
+                },
+                correctAnswer: "a"
+            },
+            {   //1 heure.
+                question: "8) Un repos court dure au minimum :",
+                answers: {
+                    a: "5 minutes.",
+                    b: "10 minutes.",
+                    c: "1 heure.",
+                    d: "Le MD détermine la durée qu'il pense être raisonnable pour se reposer, suivant le contexte."
+                },
+                correctAnswer: "c"
+            },
+            {   //Au début de son tour si on est à 0 pv.
+                question: "9) Le jet de sauvegarde contre la mort se lance :",
+                answers: {
+                    a: "Au début de son tour si on est à 0 pv. ",
+                    b: "À la fin de son tour si on est à 0 pv.",
+                    c: "Au début de son tour si on est à moins de 0 pv.",
+                    d: "À la fin de son tour si on est à moins de 0 pv."
+                },
+                correctAnswer: "a"
+            },
+            {   //La surprise est gérée dans le jeu, mais il n'y a pas de round de surprise à proprement dit.
+                question: "10) Le premier round d'un combat est appelé 'round de suprise'.",
+                answers: {
+                    a: "C'est quoi un round ?",
+                    b: "Oui, c'est le round 0 et il permet des actions limitées.",
+                    c: "Oui, c'est le round 1 et il permet des actions limitées.",
+                    d: "La surprise est gérée dans le jeu, mais il n'y a pas de round de surprise à proprement dit."
+                },
+                correctAnswer: "d"
+            }
+        ];
+
+
+        buildQuiz();
+
+        submitButton.addEventListener("click", showResults);
+
+
+        $(function () {
+            $.getJSON('/api/quizzs', function (contactsJsonPayload) {
+                $(contactsJsonPayload).each(function (i, item) {
+                    $('#log').append("<li><a href=http://localhost:61621/api/Quizzs/" + item.Id_Player + ">" + item.Pseudo + " : " + item.Note + "/10 </a></li>");
+                });
+            });
+        });
+
+
+
+
+
+
+
+    </script>
+
+
+
+}

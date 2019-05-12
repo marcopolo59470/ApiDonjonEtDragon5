@@ -33,5 +33,12 @@ namespace APIDonjonEtDragon.Controllers
 
             return View();
         }
+
+        public ActionResult Quizz()
+        {
+            ViewBag.Message = "Un petit Quizz D&D5";
+
+            return View();
+        }
     }
 }
