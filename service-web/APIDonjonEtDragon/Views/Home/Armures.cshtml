@@ -54,10 +54,28 @@
 
 @section scripts{
     <script type="text/javascript">
+
+        function delet(url_id) {
+            $.ajax({
+                type: "DELETE",
+                    url: '/api/armures/' + url_id,
+                    
+                    success: function (data) {
+                        console.log(data);
+
+                        $("#url" + url_id).remove();
+                        window.location.reload();
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                    }
+            });
+        }  
+
         $(function () {
             $.getJSON('/api/armures', function (contactsJsonPayload) {
                 $(contactsJsonPayload).each(function (i, item) {
-                    $('#armures').append("<li><a href=http://localhost:61621/api/Armures/"+item.Id_armure+">" + item.Name_armure + "</a></li>");
+                    $('#armures').append("<li><a href=http://localhost:61621/api/Armures/"+item.Id_armure+">" + item.Name_armure + "  </a>"+ "<input type='button' onClick='delet("+item.Id_armure+")' value='X' style='color:red; border-radius:20px' >"+"</li>");
                 });
             });
         });
@@ -67,7 +85,7 @@
             $.post("/api/armures/",
                 $("#saveArmures").serialize(),
                 function (value) {
-                    $('#armures').append("<li><a href=http://localhost:61621/api/Armures/"+value.Id_armure+">" + value.Name_armure + "</a></li>");
+                    $('#armures').append("<li><a href=http://localhost:61621/api/Armures/"+value.Id_armure+">" + value.Name_armure + "  </a>"+ "<input type='button' onClick='delet("+value.Id_armure+")' value='X' style='color:red; border-radius:20px' >"+"</li>");
                 },
                 "json"
             );

@@ -62,28 +62,49 @@
 <div id="body">
     Armes actuelle ;
     <ul id="armes"></ul>
-
+    
 </div>
 
 @section scripts{
     <script type="text/javascript">
+
+        function delet(url_id) {
+            $.ajax({
+                type: "DELETE",
+                    url: '/api/Armes/' + url_id,
+                    
+                    success: function (data) {
+                        console.log(data);
+
+                        $("#url" + url_id).remove();
+                        window.location.reload();
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                    }
+            });
+        }   
+        
         $(function () {
             $.getJSON('/api/armes', function (contactsJsonPayload) {
                 $(contactsJsonPayload).each(function (i, item) {
-                    $('#armes').append("<li><a href=http://localhost:61621/api/Armes/"+item.Id+">" + item.Name + "</a></li>");
+                    $('#armes').append("<li><a href=http://localhost:61621/api/Armes/"+item.Id+">" + item.Name + "  </a>"+ "<input type='button' onClick='delet("+item.Id+")' value='X' style='color:red; border-radius:20px' >"+"</li>" );
                 });
             });
         });
 
-
+        
         $('#saveArme').click(function () {
             $.post("/api/armes/",
                 $("#saveArmes").serialize(),
                 function (value) {
-                    $('#armes').append("<li><a href=http://localhost:61621/api/Armes/"+value.Id+">" + value.Name + "</a></li>");
+                    $('#armes').append("<li><a href=http://localhost:61621/api/Armes/"+value.Id+">" + value.Name + "  </a>"+ "<input type='button' onclick='delet("+value.Id+")' value='X' style='color:red; border-radius:20px' >"+"</li>");
                 },
                 "json"
             );
         });
+
+        
+
     </script>
 }

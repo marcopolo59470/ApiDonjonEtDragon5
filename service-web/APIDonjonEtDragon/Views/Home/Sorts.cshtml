@@ -75,11 +75,32 @@
 </div>
 
 @section scripts{
+
+
     <script type="text/javascript">
+
+           
+        function delet(url_id){
+            $.ajax({
+                type: "DELETE",
+                    url: '/api/sorts/' + url_id,
+                    
+                    success: function (data) {
+                        console.log(data);
+
+                        $("#url" + url_id).remove();
+                        window.location.reload();
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                    }
+            });
+        } 
+        
         $(function () {
             $.getJSON('/api/sorts', function (contactsJsonPayload) {
                 $(contactsJsonPayload).each(function (i, item) {
-                    $('#sorts').append("<li><a href=http://localhost:61621/api/Sorts/"+item.Id_sorts+">" + item.Name_sorts + "</a></li>");
+                    $('#sorts').append("<li><a href=http://localhost:61621/api/Sorts/"+item.Id_sorts+">" + item.Name_sorts + "  </a>"+ "<input type='button' onClick='delet("+item.Id_sorts+")' value='X' style='color:red; border-radius:20px' >"+"</li>" );
                 });
             });
         });
@@ -89,7 +110,7 @@
             $.post("/api/sorts/",
                 $("#saveSorts").serialize(),
                 function (value) {
-                    $('#sorts').append("<li><a href=http://localhost:61621/api/Sorts/"+value.Id_sorts+">" + value.Name_sorts + "</a></li>");
+                    $('#sorts').append("<li><a href=http://localhost:61621/api/Sorts/" + value.Id_sorts + ">" + value.Name_sorts + "  </a>" + "<input type='button' onClick='delet(" + value.Id_sorts + ")' value='X' style='color:red; border-radius:20px' >" + "</li>");
                 },
                 "json"
             );

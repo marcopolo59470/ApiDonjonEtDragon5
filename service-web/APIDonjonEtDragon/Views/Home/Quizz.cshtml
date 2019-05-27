@@ -222,10 +222,28 @@ recap des scores ;
         submitButton.addEventListener("click", showResults);
 
 
+        function delet(url_id) {
+            $.ajax({
+                type: "DELETE",
+                    url: '/api/quizzs/' + url_id,
+                    
+                    success: function (data) {
+                        console.log(data);
+
+                        $("#url" + url_id).remove();
+                        window.location.reload();
+                    },
+                    error: function (data) {
+                        console.log('Error:', data);
+                    }
+            });
+        } 
+
+
         $(function () {
             $.getJSON('/api/quizzs', function (contactsJsonPayload) {
                 $(contactsJsonPayload).each(function (i, item) {
-                    $('#log').append("<li><a href=http://localhost:61621/api/Quizzs/" + item.Id_Player + ">" + item.Pseudo + " : " + item.Note + "/10 </a></li>");
+                    $('#log').append("<li><a href=http://localhost:61621/api/Quizzs/" + item.Id_Player + ">" + item.Pseudo + " : " + item.Note + "/10   </a>"+ "<input type='button' onClick='delet("+item.Id_Player+")' value='X' style='color:red; border-radius:20px' >"+"</li>");
                 });
             });
         });
