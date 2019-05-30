@@ -2,5 +2,232 @@
     ViewBag.Title = "Index";
 }
 
-    <br />
-Ca arrive ...
+<br />
+
+<h3> API dungeon and dragon 5</h3>
+
+
+
+<table class="table">
+    lien pour test les verbes
+    <tr>
+        <td>sorts</td>
+        <td>http://localhost:61621/api/sorts</td>
+    </tr>
+    <tr>
+        <td>arme</td>
+        <td>http://localhost:61621/api/armes</td>
+    </tr>
+    <tr>
+        <td>armure</td>
+        <td>http://localhost:61621/api/armures</td>
+    </tr>
+    <tr>
+        <td>quizz</td>
+        <td>http://localhost:61621/api/quizzs</td>
+    </tr>
+</table>
+
+<table class="table">
+    Data type table armes
+    <tr>
+        <td>Id</td>
+        <td>int</td>
+        <td>=====</td>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td>string</td>
+        <td>nom de l'arme</td>
+    </tr>
+    <tr>
+        <td>IsGuerre</td>
+        <td>bool</td>
+        <td>arme de guerre ou pas</td>
+    </tr>
+    <tr>
+        <td>IsDistant</td>
+        <td>bool</td>
+        <td>arme a distance ou pas</td>
+    </tr>
+    <tr>
+        <td>VO_Name</td>
+        <td>string</td>
+        <td>nom en VO de l'arme</td>
+    </tr>
+    <tr>
+        <td>Bobo</td>
+        <td>string</td>
+        <td>degats de l'arme</td>
+    </tr>
+    <tr>
+        <td>Type_bobo</td>
+        <td>string</td>
+        <td>type de degats de l'arme</td>
+    </tr>
+    <tr>
+        <td>Poids</td>
+        <td>float</td>
+        <td>poids en KG</td>
+    </tr>
+    <tr>
+        <td>Prix</td>
+        <td>string</td>
+        <td>le prix de l'arme</td>
+    </tr>
+    <tr>
+        <td>Propriete</td>
+        <td>string</td>
+        <td>propriété bonus de l'arme</td>
+    </tr>
+    <tr>
+        <td>Description</td>
+        <td>string</td>
+        <td>description wikipediesque de l'arme</td>
+    </tr>
+</table>
+
+<table class="table">
+    Data type table armures
+    <tr>
+        <td>Id_armure</td>
+        <td>int</td>
+        <td>=====</td>
+    </tr>
+    <tr>
+        <td>Name_armure</td>
+        <td>string</td>
+        <td>nom de l'armure</td>
+    </tr>
+
+    <tr>
+        <td>VO_Name_armure</td>
+        <td>string</td>
+        <td>nom en VO de l'armure</td>
+    </tr>
+    <tr>
+        <td>CA</td>
+        <td>int</td>
+        <td>classe d'armure de l'armure</td>
+    </tr>
+    <tr>
+        <td>Force</td>
+        <td>string</td>
+        <td>force requise pour porter l'armure</td>
+    </tr>
+    <tr>
+        <td>Poids_armure</td>
+        <td>float</td>
+        <td>poids en KG</td>
+    </tr>
+    <tr>
+        <td>Prix_armure</td>
+        <td>string</td>
+        <td>le prix de l'armure</td>
+    </tr>
+    <tr>
+        <td>Description_armure</td>
+        <td>string</td>
+        <td>description officielle de l'armure</td>
+    </tr>
+    <tr>
+        <td>Bonus_CA</td>
+        <td>string</td>
+        <td>bonus s'il existe a la CA</td>chrome://vivaldi-webui/startpage?section=Speed-dials&activeSpeedDialIndex=0&background-color=#000000
+    </tr>
+</table>
+
+<table class="table">
+    Data type table sorts
+    <tr>
+        <td>Id_sorts</td>
+        <td>int</td>
+        <td>=====</td>
+    </tr>
+    <tr>
+        <td>Name_sorts</td>
+        <td>string</td>
+        <td>nom du sort</td>
+    </tr>
+
+    <tr>
+        <td>VO_Name_sort</td>
+        <td>string</td>
+        <td>nom en VO du sort</td>
+    </tr>
+    <tr>
+        <td>Ecole</td>
+        <td>string</td>
+        <td>école de magie du sorte</td>
+    </tr>
+    <tr>
+        <td>Niveau</td>
+        <td>int</td>
+        <td>niveau du sort (0=mineur)</td>
+    </tr>
+    <tr>
+        <td>Tps_incant</td>
+        <td>string</td>
+        <td>Durée incantation pour lancer le sort</td>
+    </tr>
+    <tr>
+        <td>Portée</td>
+        <td>string</td>
+        <td>distance maximale du sort</td>
+    </tr>
+    <tr>
+        <td>IsConcentration</td>
+        <td>bool</td>
+        <td>sort de concentration ou pas</td>
+    </tr>
+    <tr>
+        <td>Durée</td>
+        <td>int</td>
+        <td>durée maximale en sec du sort</td>
+    </tr>
+    <tr>
+        <td>Effet</td>
+        <td>string</td>
+        <td>description du sort</td>
+    </tr>
+    <tr>
+        <td>Race_use</td>
+        <td>string</td>
+        <td>race ayant accès au sort</td>
+    </tr>
+    <tr>
+        <td>Lvl_upg</td>
+        <td>string</td>
+        <td>effet du sort si lancé avec un meilleur niveau</td>
+    </tr>
+    <tr>
+        <td>Autre</td>
+        <td>string</td>
+        <td>un truc a rajouter ?</td>
+    </tr>
+    <tr>
+        <td>Composantes</td>
+        <td>string</td>
+        <td>parler bouger mateiaux pour lancer le sort ?</td>
+    </tr>
+</table>
+
+<table class="table">
+    Data type table quizzs
+    <tr>
+        <td>Id_player</td>
+        <td>int</td>
+        <td>=====</td>
+    </tr>
+    <tr>
+        <td>Pseudo</td>
+        <td>string</td>
+        <td>pseudo du joueur</td>
+    </tr>
+    <tr>
+        <td>Note</td>
+        <td>int</td>
+        <td>resultat sur 10</td>
+    </tr>
+
+</table>
