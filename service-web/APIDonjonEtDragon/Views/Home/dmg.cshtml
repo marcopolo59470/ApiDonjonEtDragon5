@@ -1,45 +1,26 @@
-﻿@model IEnumerable<APIDonjonEtDragon.Models.Damage_types>
+﻿@model List<APIDonjonEtDragon.Models.Damage_types>
 
 @{
     ViewBag.Title = "dmg";
 }
 
-<h2>View</h2>
+    <h2>viens de : http://www.dnd5eapi.co</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.index)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.url)
-        </th>
-        <th></th>
-    </tr>
+
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.index)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.url)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item._id }) |
-                @Html.ActionLink("Details", "Details", new { id = item._id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item._id })
-            </td>
+                <a href=@Html.DisplayFor(modelItem => item.url)> lien </a>
+        </td>
+           
         </tr>
     }
 
