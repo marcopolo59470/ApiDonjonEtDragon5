@@ -151,6 +151,7 @@
     <Compile Include="Models\APIDonjonEtDragonContext.cs" />
     <Compile Include="Models\Armes.cs" />
     <Compile Include="Models\Armures.cs" />
+    <Compile Include="Models\Damage_types.cs" />
     <Compile Include="Models\Quizz.cs" />
     <Compile Include="Models\Sorts.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -198,9 +199,11 @@
     <Content Include="Views\Home\Sorts.cshtml" />
     <Content Include="Views\Home\Armes.cshtml" />
     <Content Include="Views\Home\Quizz.cshtml" />
+    <Content Include="Views\Home\dmg.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Damage_types\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

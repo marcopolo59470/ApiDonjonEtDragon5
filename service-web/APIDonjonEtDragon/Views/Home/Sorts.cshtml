@@ -100,7 +100,7 @@
         $(function () {
             $.getJSON('/api/sorts', function (contactsJsonPayload) {
                 $(contactsJsonPayload).each(function (i, item) {
-                    $('#sorts').append("<li><a href=http://localhost:61621/api/Sorts/"+item.Id_sorts+">" + item.Name_sorts + "  </a>"+ "<input type='button' onClick='delet("+item.Id_sorts+")' value='X' style='color:red; border-radius:20px' >"+"</li>" );
+                    $('#sorts').append("<li><a href=https://www.aidedd.org/dnd/sorts.php?vf="+item.Name_sorts+">" + item.Name_sorts + "  </a>"+ "<input type='button' onClick='delet("+item.Id_sorts+")' value='X' style='color:red; border-radius:20px' >"+"</li>" );
                 });
             });
         });
@@ -109,7 +109,7 @@
             $.post("/api/sorts/",
                 $("#saveSorts").serialize(),
                 function (value) {
-                    $('#sorts').append("<li><a href=http://localhost:61621/api/Sorts/" + value.Id_sorts + ">" + value.Name_sorts + "  </a>" + "<input type='button' onClick='delet(" + value.Id_sorts + ")' value='X' style='color:red; border-radius:20px' >" + "</li>");
+                    $('#sorts').append("<li><a href=https://www.aidedd.org/dnd/sorts.php?vf=" + value.Name_sorts + ">" + value.Name_sorts + "  </a>" + "<input type='button' onClick='delet(" + value.Id_sorts + ")' value='X' style='color:red; border-radius:20px' >" + "</li>");
                 },
                 "json"
             );

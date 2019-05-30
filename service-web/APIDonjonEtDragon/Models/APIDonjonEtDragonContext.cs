@@ -32,5 +32,7 @@ namespace APIDonjonEtDragon.Models
         public System.Data.Entity.DbSet<APIDonjonEtDragon.Models.Sorts> Sorts { get; set; }
 
         public System.Data.Entity.DbSet<APIDonjonEtDragon.Models.Quizz> Quizzs { get; set; }
+
+        public System.Data.Entity.DbSet<APIDonjonEtDragon.Models.Damage_types> Damage_types { get; set; }
     }
 }
