@@ -1,8 +1,4 @@
 # ApiDonjonEtDragon5
-projet web service
+projet web service LENOIR Marc-Antoine
 
-TODO 5/27/19:
- * bouton suppression  OK
- * API d&d5 externe
- * possibilité de trier
- 
+rapport : web_rapport.pdf 
